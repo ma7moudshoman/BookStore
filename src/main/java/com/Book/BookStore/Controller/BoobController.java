@@ -19,31 +19,34 @@ public class BoobController {
         super();
         this.bookService=bookService;
     }
-    //   http://localhost/8080/home
+    //   http://localhost:8080/home
     @GetMapping("/home")
     public String home(Model model){
-        model.addAttribute("name","bgsdfads" );
+        model.addAttribute("books", bookService.allBook());
         return "Home";
     }
-    //   http://localhost/8080/book_register
 
+    //   http://localhost:8080/available_Books
+
+    @GetMapping("/available_Books")
+    public String getAllBooks(){
+        return"BookList";
+    }
+
+    //   http://localhost:8080/book_register
     @GetMapping("/book_register")
-    public String book_register(){
+    public String book_register( Model model){
+        model.addAttribute("books",  new Book());
         return "BookRegister";
 
     }
-    //   http://localhost/8080/available_booksr
+    //   http://localhost:8080/saveBook
 
-    @GetMapping("/available_books")
-    public String getAllBooks( ){
-        return"BookList";
-    }
-    //   http://localhost/8080/save
-
-    @PostMapping("/save")
-    public String saveBook(@ModelAttribute ("book")Book book ){
+    @GetMapping("/saveBook")
+    public String addBook(@ModelAttribute Book book ){
         bookService.saveBook(book);
-        return "redirect:/BookRegister";
+        return "redirect:/available_books";
     }
+
 
 }

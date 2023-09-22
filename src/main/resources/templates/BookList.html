@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                    <a class="nav-link active text-white"  href="home">Home</a>
 
                 <li class="nav-item">
                     <a class="nav-link text-white" href="available_Books"> Available Books</a>
@@ -45,43 +45,27 @@
     <table class="table table-striped table-hover">
         <thead>
         <tr>
-            <th scope="col">Id</th>
-            <th scope="col"> Name</th>
-            <th scope="col">Author</th>
-            <th scope="col">Price</th>
+            <th scope="col">Book Id</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Book Author</th>
+            <th scope="col">Book Price</th>
             <th scope="col">Action</th>
 
         </tr>
         </thead>
         <tbody>
-<tr>
-        <th scope="row">1</th>
-        <td> mark </td>
-        <td> @mark </td>
-        <td>@mark </td>
-    <td>@khgf </td>
+
+<tr th:each="temp : ${books}">
+
+        <th th:text="${temp.id}"></th>
+        <td th:text="${temp.name}"></td>
+        <td th:text="${temp.author}"></td>
+        <td th:text="${temp.price}"></td>
+        <td th:text="Action"></td>
 
 </tr>
 
 
-<tr>
-    <th scope="row">1</th>
-    <td> mark </td>
-    <td> @mark </td>
-    <td>@mark </td>
-    <td>@khgf </td>
-
-</tr>
-
-
-<tr>
-    <th scope="row">1</th>
-    <td> mark </td>
-    <td> @mark </td>
-    <td>@mark </td>
-    <td>@khgf </td>
-
-</tr>
         </tbody>
     </table>
 </div>
@@ -89,7 +73,7 @@
 
 </body>
 </html>
-<a class="btn btn-primary btn-lg active add"  th:href="@{save}" > Add Book </a>
+<a class="btn btn-primary btn-lg active add"  href="@{save}" > Add Book </a>
 
 </body>
 </html>
