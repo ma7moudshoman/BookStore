@@ -22,10 +22,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active text-white"  href="home">Home</a>
+                    <a class="nav-link active text-white"  href="/">Home</a>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="available_Books"> Available Books</a>
+                    <a class="nav-link text-white" href="books"> Available Books</a>
                 </li>
 
                 <li class="nav-item">
@@ -48,7 +48,7 @@
             <th scope="col">Book Id</th>
             <th scope="col">Book Name</th>
             <th scope="col">Book Author</th>
-            <th scope="col">Book Price</th>
+            <th scope="col">Book price</th>
             <th scope="col">Action</th>
 
         </tr>
@@ -56,7 +56,6 @@
         <tbody>
 
 <tr th:each="temp : ${books}">
-
         <th th:text="${temp.id}"></th>
         <td th:text="${temp.name}"></td>
         <td th:text="${temp.author}"></td>
@@ -73,7 +72,8 @@
 
 </body>
 </html>
-<a class="btn btn-primary btn-lg active add"  href="@{save}" > Add Book </a>
-
+<td>
+<a class="btn btn-primary btn-lg active add"  href="book_register" > Add Book </a>
+</td>
 </body>
 </html>

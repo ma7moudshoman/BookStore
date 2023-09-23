@@ -44,6 +44,7 @@
 
 <div class=" container my-5 p-5" style="border: 1px solid black ">
     <h4 class="text-center  "> NEW BOOK REGISTER </h4>
+    <form class="col-md-4 offset-md-4" th:action="@{/save}" method="post">
     <div class="mb-3">
         <div for="name" class="form-label"> Name</div>
         <input  type="text" class="form-control" name="name">
@@ -59,9 +60,9 @@
         <input type="text" class="form-control" name="price">
     </div>
 
-<center><button type="Submit" class="btn btn-primary">Submit </button></center>
+<button type="Submit" class="btn btn-primary">Done </button>
 
-
+    </form>
 </div>
 
 </body>
