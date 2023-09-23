@@ -1,7 +1,9 @@
 package com.Book.BookStore.Controller;
 
 import com.Book.BookStore.Dao.Book;
+import com.Book.BookStore.Dao.MyBookList;
 import com.Book.BookStore.Service.BookService;
+import com.Book.BookStore.Service.MyBookListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,8 @@ public class BoobController {
 
     @Autowired
     BookService bookService;
+    @Autowired
+    MyBookListService myBookListService;
     @Autowired
     public BoobController(BookService bookService){
         super();
@@ -53,5 +57,25 @@ public class BoobController {
     public String books(Model model){
         model.addAttribute("books", bookService.allBook());
         return "BookList";
+    }
+
+    //   http://localhost:8080/my_books
+    @PostMapping("/my_books")
+    public String saveBook(@ModelAttribute MyBookList myBookList){
+        myBookListService.saveMyBooks(myBookList);
+        return "redirect:/myBooks";
+    }
+    //   http://localhost:8080/book
+    @GetMapping("/book")
+    public String MyBookLis(Model model){
+        model.addAttribute("Books",myBookListService.AllMyBooks());
+        return "myBooks";
+    }
+    //   http://localhost:8080/mylist/{id}
+
+    @GetMapping("/mylist/{id}")
+    public String saveMyBooks(@ModelAttribute("id") int id, MyBookList myBookList){
+        myBookList.save(myBookList);
+        return  "redirect:/my_books";
     }
 }
