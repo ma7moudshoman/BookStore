@@ -16,13 +16,13 @@ public class MyBookList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  long id;
 
-    @Column(name = "book_name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "book_author")
+    @Column(name = "author")
     private String author;
 
-    @Column(name = "book_price")
+    @Column(name = "price")
     private  String price;
 
 

@@ -19,11 +19,6 @@ public class MyBookListController {
     public String myBooks(){
     return "myBooks";
 }
- public String Books (Model model){
-        model.addAttribute("Books", myBookListService.AllMyBooks());
-        return "redirect:/myBooks";
- }
-
    // http://localhost:8080/deleteMylist
 @GetMapping("deleteMylist")
 public String deleteBook(@PathParam("id") int id){

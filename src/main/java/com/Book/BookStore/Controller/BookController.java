@@ -42,6 +42,10 @@ public class BookController {
         return "BookList";
     }
 
+    @GetMapping("/my_books")
+    public  String getmybooks(){
+        return "myBooks";
+    }
 
     //   http://localhost:8080/save
 
@@ -67,7 +71,7 @@ public class BookController {
     }
     //   http://localhost:8080/book
     @GetMapping("/book")
-    public String MyBookLis(Model model){
+    public String MyBookList(Model model){
         model.addAttribute("Books",myBookListService.AllMyBooks());
         return "myBooks";
     }
