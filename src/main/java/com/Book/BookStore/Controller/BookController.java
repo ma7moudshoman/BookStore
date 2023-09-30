@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class BoobController {
+public class BookController {
 
     @Autowired
     BookService bookService;
     @Autowired
     MyBookListService myBookListService;
     @Autowired
-    public BoobController(BookService bookService){
+    public BookController(BookService bookService){
         super();
         this.bookService=bookService;
     }
