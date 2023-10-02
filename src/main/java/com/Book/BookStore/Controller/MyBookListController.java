@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.websocket.server.PathParam;
 
@@ -18,12 +19,6 @@ public class MyBookListController {
     @GetMapping("/myBooks")
     public String myBooks(){
     return "myBooks";
-}
-   // http://localhost:8080/deleteMylist
-@GetMapping("deleteMylist")
-public String deleteBook(@PathParam("id") int id){
-        myBookListService.deleteBook(id);
-        return "redirect:/my_books";
 }
 
 }

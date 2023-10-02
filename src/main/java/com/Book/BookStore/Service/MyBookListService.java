@@ -23,8 +23,8 @@ public MyBookList saveMyBooks(MyBookList myBookList) {
 public List<MyBookList>AllMyBooks(){
     return myBookListRepo.findAll();
 }
-public void deleteBook(int id){
-    myBookListRepo.deleteById(id);
+public void deleteBook(long id){
+    myBookListRepo.deleteById((int) id);
 }
 
 }

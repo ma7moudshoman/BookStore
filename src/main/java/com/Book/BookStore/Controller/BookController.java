@@ -7,9 +7,9 @@ import com.Book.BookStore.Service.MyBookListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class BookController {
@@ -55,7 +55,6 @@ public class BookController {
         return "redirect:/available_Books";
     }
 
-
     //   http://localhost:8080/books
     @GetMapping("/books")
     public String books(Model model){
@@ -72,14 +71,29 @@ public class BookController {
     //   http://localhost:8080/book
     @GetMapping("/book")
     public String MyBookList(Model model){
-        model.addAttribute("Books",myBookListService.AllMyBooks());
+        List<MyBookList>list=myBookListService.AllMyBooks();
+        model.addAttribute("Books",list);
         return "myBooks";
     }
     //   http://localhost:8080/mylist/{id}
 
-    @GetMapping("/mylist/{id}")
-    public String saveMyBooks(@ModelAttribute("id") int id, MyBookList myBookList){
-        myBookList.save(myBookList);
-        return  "redirect:/my_books";
+    @RequestMapping("/mylist/{id}")
+    public String saveMyBooks(@PathVariable("id") int id){
+Book book=bookService.getBook(id);
+MyBookList myBookList=new MyBookList(book.getId(),book.getName(),book.getAuthor(),book.getPrice());
+myBookListService.saveMyBooks(myBookList);
+    return  "redirect:/my_books";
+    }
+    //   http://localhost:8080/editBook/{id}
+    @RequestMapping("/editBook/{id}")
+    public String editBook(@PathVariable("id" )int id ,Model model){
+        Book book=bookService.getBook(id);
+        model.addAttribute("book",book);
+        return "BookEdit";
+    }
+    @RequestMapping("//deleteBook/{id}")
+    public String deleteBook(@PathVariable("id") int id ){
+       bookService.deleteBook(id);
+        return "redirect:/available_books";
     }
 }

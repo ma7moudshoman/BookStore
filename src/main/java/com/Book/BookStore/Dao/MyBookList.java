@@ -13,7 +13,6 @@ import javax.persistence.*;
 @Table(name = "hello")
 public class MyBookList {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  long id;
 
     @Column(name = "name")

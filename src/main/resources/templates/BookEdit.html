@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
@@ -43,24 +43,25 @@
 </nav>
 
 <div class=" container my-5 p-5" style="border: 1px solid black ">
-    <h4 class="text-center  "> NEW BOOK REGISTER </h4>
-    <form class="col-md-4 offset-md-4" th:action="@{/save}" method="post">
-    <div class="mb-3">
-        <div for="name" class="form-label"> Name</div>
-        <input  type="text" class="form-control" name="name">
-    </div>
+    <h4 class="text-center  "> EDIT BOOK HERE </h4>
+    <form class="col-md-4 offset-md-4" th:action="@{/save}" method="post" th:object="${book}">
+       <input type="hidden" name="id" th:value="${book.id}"/>
+        <div class="mb-3">
+            <div for="name" class="form-label"> Name</div>
+            <input  type="text" class="form-control" name="name" th:value="${book.name}">
+        </div>
 
-    <div class="mb-3">
-        <div for="author" class="form-label"> Author</div>
-        <input type="text" class="form-control" name="author">
-    </div>
+        <div class="mb-3">
+            <div for="author" class="form-label"> Author</div>
+            <input type="text" class="form-control" name="author" th:value="${book.author}">
+        </div>
 
-    <div class="mb-3">
-        <div for="price" class="form-label"> Price</div>
-        <input type="text" class="form-control" name="price">
-    </div>
+        <div class="mb-3">
+            <div for="price" class="form-label"> Price</div>
+            <input type="text" class="form-control" name="price"th:value="${book.price}">
+        </div>
 
-<button type="Submit" class="btn btn-primary">Done </button>
+        <button type="Submit" class="btn btn-primary">Done </button>
 
     </form>
 </div>
